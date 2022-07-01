@@ -6,3 +6,4 @@ Task 3 prints lower and uppercase alphabets followed by a new line
 Task 4 Prints all the letters except q and e
 Task 5 prints all single digit numbers of base 10 starting from 0, followed by a new line
 Task 6 uses putchar to print single digit nums of base 10 starting from 0, followed by a new line
+Task 7 prints the alphabet in reverse order
