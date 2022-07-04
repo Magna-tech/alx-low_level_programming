@@ -11,3 +11,4 @@ Task 8 prints the hexadecimal numbers in lowercase
 Task 9 prints all possible combinations of single-digit numbers.
 Task 100 prints all possible different combinations of two digits
 Task 101 prints all possible different combinations of three digits
+Task 102 prints all possible combinations of two two-digit numbers
