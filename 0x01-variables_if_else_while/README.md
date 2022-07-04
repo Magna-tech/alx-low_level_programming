@@ -9,3 +9,4 @@ Task 6 uses putchar to print single digit nums of base 10 starting from 0, follo
 Task 7 prints the alphabet in reverse order
 Task 8 prints the hexadecimal numbers in lowercase
 Task 9 prints all possible combinations of single-digit numbers.
+Task 100 prints all possible different combinations of two digits
