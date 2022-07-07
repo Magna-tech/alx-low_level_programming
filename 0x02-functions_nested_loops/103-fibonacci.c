@@ -4,6 +4,7 @@
 /**
  * main - entry of program
  *
+ * Description: prints sum of all even fibonacci series below 4 million
  * Return:0
  */
 int main(void)
