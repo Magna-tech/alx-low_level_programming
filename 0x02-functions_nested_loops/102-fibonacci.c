@@ -9,17 +9,19 @@
 int main(void)
 {
 	int a;
-	int first = 1, second = 2;
-	int next = first + second;
+	long int first = 1, second = 2;
+	long int next = first + second;
 
-	printf("%d, %d, ", first, second);
+	printf("%ld, %ld, ", first, second);
 
 	for (a = 3; a <= 50; a++)
 	{
-		printf("%d, ", next);
+		printf("%ld", next);
 		first = second;
 		second = next;
 		next = first + second;
+		if (a < 50)
+			printf(", ");
 	}
 	printf("\n");
 
