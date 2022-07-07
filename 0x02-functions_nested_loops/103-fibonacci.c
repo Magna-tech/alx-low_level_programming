@@ -8,8 +8,8 @@
  */
 int main(void)
 {
-	long int a = 1, b = 2, next;
-	long long int sum;
+	int a = 1, b = 2, next;
+	int sum = 0;
 
 	next = a + b;
 	sum += b;
@@ -22,7 +22,7 @@ int main(void)
 		b = next;
 		next = a + b;
 	}
-	printf("%lld\n", sum);
+	printf("%d\n", sum);
 
 	return (0);
 }
