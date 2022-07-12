@@ -1,4 +1,3 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -19,9 +18,9 @@ int main(void)
 	{
 		a = rand() % 128;
 		sum +=  a;
-		_putchar(a);
+		putchar(a);
 	}
-	_putchar(2772 - sum);
+	putchar(2772 - sum);
 
 	return (0);
 }
