@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_number - prints an integer
+ * print_number - prints a number
  * @n: number to be printed
  *
  * Return: no value
@@ -9,16 +9,12 @@
 
 void print_number(int n)
 {
-	unsigned int a;
+	unsigned int a = n;
 
-	if (a < 0)
+	if (n < 0)
 	{
-		a = -n;
 		_putchar('-');
-	}
-	else
-	{
-		a = n;
+		a = -a;
 	}
 	if (a / 10 > 0)
 		print_number(a / 10);
