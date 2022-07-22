@@ -9,11 +9,28 @@
 
 int _sqrt_recursion(int n)
 {
-	int i = n / 2;
+	if (n == 0)
+		return (1);
+	else if (n < 0)
+		return (-1);
+	else
+		return (roots(n, 1));
+}
 
-	_sqrt_recursion(i - 1);
+/**
+ * roots - finds the square root of a number
+ * @n: number to find sqrt of
+ * @i: starting value
+ *
+ * Return: square root, -1 otherwise
+ */
+
+int roots(int n, int i)
+{
 	if (i * i == n)
 		return (i);
+	else if (i * i < n)
+		return (roots(n, i + 1));
 	else
 		return (-1);
 }
