@@ -10,5 +10,7 @@
 
 char *argstostr(int ac, char **av)
 {
+	(void)ac;
+
 	return (av);
 }

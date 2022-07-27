@@ -10,5 +10,6 @@
 
 char **strtow(char *str)
 {
+	(void)str;
 	return ('\0');
 }
