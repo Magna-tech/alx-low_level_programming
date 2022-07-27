@@ -10,5 +10,26 @@
 
 char *str_concat(char *s1, char *s2)
 {
-	return (s1);
+	char *new;
+	int i = 0, j = 0, l1 = 0, l2 = 0;
+
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
+	while (s1[l1])
+		l1++;
+	while (s2[l2])
+		l2++;
+	l2++; /*Null terminator at the end of the combined string*/
+	new = malloc((l1 + l2) * sizeof(char));
+
+	if (new == NULL)
+		return ('\0');
+	while (s1[i])
+		new[j++] = s1[j++];
+	while (s2[i])
+		new[j++] = s2[i++];
+
+	return (new);
 }
