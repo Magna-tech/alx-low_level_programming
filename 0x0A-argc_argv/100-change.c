@@ -21,11 +21,15 @@ int main(int argc, char *argv[])
 	}
 	i = atoi(argv[1]);
 	if (i < 0)
+	{
 		printf("0\n");
-
-	coins += (i / 25) + (i % 25) / 10 + ((i % 25) % 10) / 5 +
-		(((i % 25) % 10) % 5) / 2 + ((((i % 25) % 10) % 5) % 2) / 1;
-	printf("%d\n", coins);
+	}
+	else
+	{
+		coins += (i / 25) + (i % 25) / 10 + ((i % 25) % 10) / 5 +
+			(((i % 25) % 10) % 5) / 2 + ((((i % 25) % 10) % 5) % 2) / 1;
+		printf("%d\n", coins);
+	}
 
 	return (0);
 }
