@@ -1,3 +1,2 @@
-.PHONY: all
 school:
-	gcc main.c school.c -o school
+	gcc $(wildcard *.c) -o school
