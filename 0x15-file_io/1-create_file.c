@@ -8,5 +8,32 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-	return (-1);
+	FILE *new;
+	/*char *buffer = (char *) malloc(sizeof(char) * text_content);*/
+	int length, chars_written;
+
+	if (filename == NULL)
+	{
+		return (-1);
+	}
+	new = fopen(filename, "wx");
+
+	if (new == NULL)
+	{
+		return (-1);
+	}
+	length = strlen(text_content);
+	chars_written = fwrite(text_content, sizeof(char), length, new);
+	fclose(new);
+
+	if (chars_written != length)
+	{
+		return (-1);
+	}
+	if (chmod(filename, S_IRUSR | S_IWUSR) != 0)
+	{
+		return (-1);
+	}
+
+	return (1);
 }
