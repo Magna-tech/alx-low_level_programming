@@ -16,7 +16,7 @@ int create_file(const char *filename, char *text_content)
 	{
 		return (-1);
 	}
-	new = fopen(filename, "wx");
+	new = fopen(filename, "w");
 
 	if (new == NULL)
 	{
