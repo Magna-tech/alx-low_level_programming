@@ -22,6 +22,11 @@ int create_file(const char *filename, char *text_content)
 	{
 		return (-1);
 	}
+	if (text_content == NULL)
+	{
+		fclose(new);
+		return (1);
+	}
 	length = strlen(text_content);
 	chars_written = fwrite(text_content, sizeof(char), length, new);
 	fclose(new);
