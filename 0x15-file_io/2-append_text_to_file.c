@@ -16,11 +16,20 @@ int append_text_to_file(const char *filename, char *text_content)
 	{
 		return (-1);
 	}
-	new = fopen(filename, "w");
+	if (access(filename, W_OK) != 0)
+	{
+		return (-1);
+	}
+	new = fopen(filename, "a");
 
 	if (new == NULL)
 	{
 		return (-1);
+	}
+	if (text_content == NULL)
+	{
+		fclose(new);
+		return (1);
 	}
 	length = strlen(text_content);
 	chars_written = fwrite(text_content, sizeof(char), length, new);
@@ -28,11 +37,6 @@ int append_text_to_file(const char *filename, char *text_content)
 
 	if (chars_written != length)
 	{
-		return (-1);
-	}
-	if (chmod(filename, S_IRUSR | S_IWUSR) != 0)
-	{
-		remove(filename);
 		return (-1);
 	}
 
