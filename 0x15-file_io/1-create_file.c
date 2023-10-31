@@ -9,7 +9,6 @@
 int create_file(const char *filename, char *text_content)
 {
 	FILE *new;
-	/*char *buffer = (char *) malloc(sizeof(char) * text_content);*/
 	int length, chars_written;
 
 	if (filename == NULL)
