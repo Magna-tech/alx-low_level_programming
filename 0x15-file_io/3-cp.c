@@ -10,36 +10,49 @@ int main(int argc, char *argv[])
 {
 	FILE *old;
 	FILE *new;
-	char content;
+	char buffer[BUFFER_SIZE];
+	size_t read;
 
 	if (argc != 3)
 	{
 		fprintf(stderr, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-
-	if (access(argv[2], W_OK) != 0)
+	/*Check if file to copy from exists and can be read*/
+	if (access(argv[1], R_OK) != 0)
 	{
-		return (-1);
+		fprintf(stderr, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
 	}
-	old = fopen(argv[1], "r");
-	new = fopen(argv[2], "a");
+	/*Open both files in binary mode*/
+	old = fopen(argv[1], "rb");
+	new = fopen(argv[2], "wb");
 
-	if (old == NULL)
+	if (old == NULL || new == NULL)
 	{
-		return (-1);
-	}
-	if (new == NULL)
-	{
+		fclose(old);
 		fclose(new);
-		return (1);
+		return (-1);
 	}
-	while ((content = fgetc(old)) != EOF)
+	while ((read = fread(buffer, 1, BUFFER_SIZE, old)) > 0)
 	{
-		fputc(content, new);
+		if ((fwrite(buffer, 1, read, new)) != read)
+		{
+			fprintf(stderr, "Error: Can't write to %s", argv[2]);
+			fclose(old);
+			fclose(new);
+			exit(99);
+		}
 	}
-	fclose(old);
-	fclose(new);
-
-	return (1);
+	if (fclose(old) != 0)
+	{
+		fprintf(stderr, "Error: Can't close fd %d\n", fileno(old));
+		exit(100);
+	}
+	if (fclose(new) != 0)
+	{
+		fprintf(stderr, "Error: Can't close fd %d\n", fileno(new));
+		exit(100);
+	}
+	return (0);
 }
