@@ -8,10 +8,9 @@
  */
 int main(int argc, char *argv[])
 {
-	FILE *old;
-	FILE *new;
+	int old, new;
 	char buffer[BUFFER_SIZE];
-	size_t read;
+	size_t reader, writer;
 
 	if (argc != 3)
 	{
@@ -25,33 +24,34 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 	/*Open both files in binary mode*/
-	old = fopen(argv[1], "rb");
-	new = fopen(argv[2], "wb");
+	old = open(argv[1], O_RDONLY);
+	new = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP);
 
-	if (old == NULL || new == NULL)
+	if (old == -1 || new == -1)
 	{
-		fclose(old);
-		fclose(new);
+		close(old);
+		close(new);
 		return (-1);
 	}
-	while ((read = fread(buffer, 1, BUFFER_SIZE, old)) > 0)
+	while ((reader = read(old, buffer, BUFFER_SIZE)) > 0)
 	{
-		if ((fwrite(buffer, 1, read, new)) != read)
+		writer = write(new, buffer, reader);
+		if (writer != reader)
 		{
 			fprintf(stderr, "Error: Can't write to %s", argv[2]);
-			fclose(old);
-			fclose(new);
+			close(old);
+			close(new);
 			exit(99);
 		}
 	}
-	if (fclose(old) != 0)
+	if (close(old) != 0)
 	{
-		fprintf(stderr, "Error: Can't close fd %d\n", fileno(old));
+		fprintf(stderr, "Error: Can't close fd %d\n", old);
 		exit(100);
 	}
-	if (fclose(new) != 0)
+	if (close(new) != 0)
 	{
-		fprintf(stderr, "Error: Can't close fd %d\n", fileno(new));
+		fprintf(stderr, "Error: Can't close fd %d\n", new);
 		exit(100);
 	}
 	return (0);
