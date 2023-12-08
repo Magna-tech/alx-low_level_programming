@@ -8,12 +8,12 @@
  *
  * Return: address of new node or NULL on failure
  */
-listint_t *insert_dnodeint_at_index(listint_t **head, unsigned int idx, int n)
+listint_t *insert_dnodeint_at_index(listint_t **h, unsigned int idx, int n)
 {
 	(void)idx;
 	(void)n;
 
-	if (*head == NULL)
+	if (*h == NULL)
 		return (NULL);
 	else
 		return (NULL);
