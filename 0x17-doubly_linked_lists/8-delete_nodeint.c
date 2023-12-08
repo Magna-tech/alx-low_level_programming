@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * delete_nodeint_at_index - delete anode at given index
+ * delete_dnodeint_at_index - delete anode at given index
  * @head: pointer tot start of list
  * @index: given index
  *
